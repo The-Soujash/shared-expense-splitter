@@ -99,16 +99,6 @@ export function LoginForm({ onLogin, onSwitchToRegister, error, isLoading, onCle
             </button>
           </form>
 
-          {/* Demo Credentials */}
-          <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-            <p className="text-sm text-blue-800 font-medium mb-2">Demo Credentials:</p>
-            <div className="text-sm text-blue-700 space-y-1">
-              <p>Email: john@example.com</p>
-              <p>Email: jane@example.com</p>
-              <p className="text-xs text-blue-600 mt-2">Use any password to sign in</p>
-            </div>
-          </div>
-
           {/* Switch to Register */}
           <div className="mt-6 text-center">
             <p className="text-gray-600">

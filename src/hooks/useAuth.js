@@ -4,18 +4,7 @@ import { useLocalStorage } from './useLocalStorage';
 const initialAuthState = {
   isAuthenticated: false,
   currentUser: null,
-  users: [
-    {
-      id: '1',
-      name: 'John Doe',
-      email: 'john@example.com',
-    },
-    {
-      id: '2',
-      name: 'Jane Smith',
-      email: 'jane@example.com',
-    },
-  ],
+  users: [],
 };
 
 export function useAuth() {
@@ -39,8 +28,7 @@ export function useAuth() {
         return false;
       }
 
-      // In a real app, you'd verify the password hash
-      // For demo purposes, we'll accept any password
+      // Accept any password for demo or implement real password logic here
       setAuthState((prev) => ({
         ...prev,
         isAuthenticated: true,
@@ -61,7 +49,6 @@ export function useAuth() {
       // Simulate API call delay
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
-      // Check if user already exists
       const existingUser = authState.users.find((u) => u.email === data.email);
       if (existingUser) {
         setError('An account with this email already exists');
@@ -69,14 +56,12 @@ export function useAuth() {
         return false;
       }
 
-      // Validate passwords match
       if (data.password !== data.confirmPassword) {
         setError('Passwords do not match');
         setIsLoading(false);
         return false;
       }
 
-      // Create new user
       const newUser = {
         id: crypto.randomUUID(),
         name: data.name,
